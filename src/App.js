@@ -1,13 +1,13 @@
 import './App.css';
 
-function Example(props) {
+function Message(props) {
     return <p className="example_text" style={{ border: '2px solid red', borderRadius: '8px'}}>{props.text}</p>
 }
 
 function App() {
   return (
     <div className="App">
-      <Example text="Hello from Example component!" />
+      <Message text="Hello from Message component!" />
     </div>
   );
 }
