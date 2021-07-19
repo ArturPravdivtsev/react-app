@@ -9,16 +9,14 @@ function App() {
 
   React.useEffect(() => {
     if(robot === true) {
-      const messages = [...messageList]
-      messages.push({text: 'Thanks!', author: 'robot'})
+      const messages = [...messageList, {text: 'Thanks!', author: 'robot'}]
       setMessageList(messages)
       setRobot(false)
     }
   }, [robot, messageList]);
 
   const handleClick = React.useCallback(() => {
-    const messages = [...messageList]
-    messages.push({text, author})
+    const messages = [...messageList, {text, author}]
     setMessageList(messages)
     setRobot(true)
   }, [messageList, text, author])
