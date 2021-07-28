@@ -1,4 +1,5 @@
-import React  from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
@@ -25,11 +26,11 @@ function App() {
       name: 'Test1'
     },
     {
-      id: 0,
+      id: 1,
       name: 'Test2'
     },
     {
-      id: 0,
+      id: 2,
       name: 'Test3'
     }
   ]
@@ -45,15 +46,15 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    if(robot === true) {
-      const messages = [...messageList, {text: 'Thanks!', author: AUTHORS.BOT}]
+    if (robot === true) {
+      const messages = [...messageList, { text: 'Thanks!', author: AUTHORS.BOT }]
       setMessageList(messages)
       setRobot(false)
     }
   }, [robot, messageList]);
 
   const handleClick = React.useCallback(() => {
-    const messages = [...messageList, {text, author: AUTHORS.ME}]
+    const messages = [...messageList, { text, author: AUTHORS.ME }]
     setMessageList(messages)
     setRobot(true)
   }, [messageList, text])
@@ -69,7 +70,7 @@ function App() {
       <Grid container spacing={2}>
         <Grid item xs={2}>
           <List component="nav">
-            {chatArr.map((chat, idx) => <ListItem divider button key={idx} ><ListItemText primary={chat.name} /></ListItem>)}
+            {chatArr.map((chat, idx) => <ListItem component={Link} to={"/chats/" + idx} divider button key={idx} ><ListItemText primary={chat.name} /></ListItem>)}
           </List>
         </Grid>
         <Grid item xs={10}>
@@ -78,7 +79,7 @@ function App() {
           </ul>
           <Container component="main" maxWidth="xs">
             <form noValidate>
-              <TextField 
+              <TextField
                 id="outlined-basic"
                 label="Сообщение"
                 placeholder="Введите сообщение"
