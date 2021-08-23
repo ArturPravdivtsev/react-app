@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { useDispatch, useSelector } from 'react-redux'
-import { addMessage } from '../store/actions/messages'
+import { sendMessageFromBot } from '../store/actions/messages'
 import { useIsChatExists } from '../hooks/useIsChatExists'
 
 const Chat = (props) => {
@@ -38,7 +38,7 @@ const Chat = (props) => {
     const handleClick = () => {
         console.log(message)
         dispatch(
-            addMessage(chatId, {
+            sendMessageFromBot(chatId, {
                 id: `message${Date.now()}`,
                 author: AUTHORS.ME,
                 text: message,
