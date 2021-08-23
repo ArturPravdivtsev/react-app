@@ -4,6 +4,7 @@ import '../App.css'
 import App from '../App'
 import Menu from '../components/Menu'
 import Chat from '../components/Chat'
+import Chats from '../components/Chats'
 import Profile from '../components/Profile'
 import NotFound from '../components/NotFound'
 
@@ -12,11 +13,11 @@ export default function Router() {
         <div>
             <Menu />
             <Switch>
-                <Route path="/" exact />
+                <Route path="/" exact component={App} />
 
-                <Route exact path="/chats" component={App} />
+                <Route exact path="/chats" component={Chats} />
 
-                <Route path="/chats/:chatId" render={() => <Chat />} />
+                <Route path="/chats/:chatId" component={Chat} />
 
                 <Route path="/profile" component={Profile} />
 

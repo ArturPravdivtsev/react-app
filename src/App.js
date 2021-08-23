@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { AUTHORS } from './constants'
+import { chatsSelector } from './store/selectors/chats'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container';
@@ -9,31 +12,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import './App.css';
 
-const AUTHORS = {
-  ME: 'Me',
-  BOT: 'Bot',
-}
 
 function App() {
   const [messageList, setMessageList] = React.useState([])
   const [text, setText] = React.useState('')
   const [robot, setRobot] = React.useState(false)
   const inputRef = React.useRef();
-
-  const chatArr = [
-    {
-      id: 0,
-      name: 'Test1'
-    },
-    {
-      id: 1,
-      name: 'Test2'
-    },
-    {
-      id: 2,
-      name: 'Test3'
-    }
-  ]
+  const chatArr = useSelector(chatsSelector)
 
   React.useEffect(() => {
     const timeout = setTimeout(() => {

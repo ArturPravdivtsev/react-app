@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeShowName } from '../store/actions/profile'
+import { profileSelector } from '../store/selectors/profile'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -10,7 +11,7 @@ import Switch from '@material-ui/core/Switch'
 
 const Profile = () => {
     const dispatch = useDispatch()
-    const { name, age, showName } = useSelector((state) => state.profile)
+    const { name, age, showName } = useSelector(profileSelector)
 
     const [showNameSwitch, setShowNameSwitch] = React.useState(showName);
 
