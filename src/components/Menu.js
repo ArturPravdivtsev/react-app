@@ -53,6 +53,9 @@ export default function Menu() {
                     <ListItem component={Link} to="/profile" divider button>
                         Profile
                     </ListItem>
+                    <ListItem component={Link} to="/news" divider button>
+                        News
+                    </ListItem>
                 </List>
             </Drawer>
         </React.Fragment>
