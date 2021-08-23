@@ -6,6 +6,7 @@ import Menu from '../components/Menu'
 import Chat from '../components/Chat'
 import Chats from '../components/Chats'
 import Profile from '../components/Profile'
+import News from '../components/News'
 import NotFound from '../components/NotFound'
 
 export default function Router() {
@@ -20,6 +21,8 @@ export default function Router() {
                 <Route path="/chats/:chatId" component={Chat} />
 
                 <Route path="/profile" component={Profile} />
+
+                <Route path="/news" component={News} />
 
                 <Route path="/404" component={NotFound} />
                 <Route component={NotFound} />
