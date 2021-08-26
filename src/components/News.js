@@ -13,7 +13,7 @@ export default function News() {
 
     React.useEffect(() => {
         loadData()
-    });
+    }, []);
 
     if (status === NEWS_REQUEST_STATUS.LOADING) {
         return <p>Loading...</p>
