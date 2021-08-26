@@ -23,8 +23,6 @@ export default function Menu() {
     const dispatch = useDispatch();
     React.useEffect(() => {
         firebase.auth().onAuthStateChanged((user) => {
-            console.log('onAuthStateChanged', { user })
-
             dispatch(changeIsAuthed(Boolean(user)))
         })
     }, []);

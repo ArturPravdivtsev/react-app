@@ -26,7 +26,6 @@ const Chat = (props) => {
     }, []);
 
     const handleMessageChange = ({ target: { value } }) => {
-        console.log(value)
         setMessage(value)
     }
 
@@ -40,7 +39,6 @@ const Chat = (props) => {
     }, [])
 
     const handleClick = () => {
-        console.log(message)
         dispatch(
             sendMessageFromBot(chatId, {
                 id: `message${Date.now()}`,
@@ -51,10 +49,9 @@ const Chat = (props) => {
     }
 
     const isChatExists = useIsChatExists({ chatId })
-
-    if (!isChatExists) {
-        history.push('/404');
-    }
+    // if (!isChatExists) {
+    //     history.push('/404');
+    // }
 
     return (
         <Grid item xs={10}>

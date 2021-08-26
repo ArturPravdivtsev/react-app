@@ -5,10 +5,13 @@ import List from '@material-ui/core/List'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { useSelector, useDispatch } from 'react-redux'
 import { addChatToDatabase, removeChatFromDatabase, subscribeChatsChangings } from '../store/actions/chats'
 
 export default function Chats() {
+    const [newChatName, setNewChatName] = React.useState('')
+
     const history = useHistory()
 
     const chats = useSelector((state) => state.chats)
@@ -23,12 +26,16 @@ export default function Chats() {
         history.push(`/chats/${chat.id}`)
     }
 
-    const handleAddChat = (name) => {
-        dispatch(addChatToDatabase(`chat${Date.now()}`, name))
+    const handleAddChat = () => {
+        dispatch(addChatToDatabase(`chat${Date.now()}`, newChatName))
     }
 
     const handleRemoveChat = (chatId) => {
         dispatch(removeChatFromDatabase(chatId))
+    }
+
+    const handleSetNewChatName = ({ target: { value } }) => {
+        setNewChatName(value)
     }
 
     return (
@@ -63,8 +70,10 @@ export default function Chats() {
                 required
                 margin="normal"
                 autoFocus={true}
-                onSubmit={handleAddChat}
+                value={newChatName}
+                onChange={handleSetNewChatName}
             />
+            <Button onClick={handleAddChat}>Создать чат</Button>
         </div>
     )
 }

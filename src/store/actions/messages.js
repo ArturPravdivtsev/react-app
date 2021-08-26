@@ -36,8 +36,6 @@ export const subscribeOnMessagesChanges = (chatId) => {
             .ref('messages')
             .child(chatId)
             .on('child_added', (snapshot) => {
-                console.log('child_added', snapshot.val())
-
                 dispatch(addMessage(chatId, snapshot.val()))
             })
 
@@ -46,8 +44,6 @@ export const subscribeOnMessagesChanges = (chatId) => {
             .ref('messages')
             .child(chatId)
             .on('child_changed', (snapshot) => {
-                console.log('child_changed', snapshot.val())
-
                 dispatch(addMessage(chatId, snapshot.val()))
             })
     }
