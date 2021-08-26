@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router'
+import { Switch, Route, Redirect } from 'react-router'
 import '../App.css'
 import App from '../App'
 import Menu from '../components/Menu'
@@ -8,6 +8,13 @@ import Chats from '../components/Chats'
 import Profile from '../components/Profile'
 import News from '../components/News'
 import NotFound from '../components/NotFound'
+import Login from '../components/Login'
+import { useSelector } from 'react-redux'
+
+const PrivateRoute = (props) => {
+    const isAuthed = useSelector((state) => state.profile.isAuthed)
+    return isAuthed ? <Route {...props} /> : <Redirect to="/login" />
+}
 
 export default function Router() {
     return (
@@ -16,11 +23,13 @@ export default function Router() {
             <Switch>
                 <Route path="/" exact component={App} />
 
-                <Route exact path="/chats" component={Chats} />
+                <PrivateRoute exact path="/chats" component={Chats} />
 
-                <Route path="/chats/:chatId" component={Chat} />
+                <PrivateRoute path="/chats/:chatId" component={Chat} />
 
-                <Route path="/profile" component={Profile} />
+                <PrivateRoute path="/profile" component={Profile} />
+
+                <Route path="/login" component={Login} />
 
                 <Route path="/news" component={News} />
 

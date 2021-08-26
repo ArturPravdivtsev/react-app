@@ -14,45 +14,45 @@ import './App.css';
 
 
 function App() {
-  const [messageList, setMessageList] = React.useState([])
-  const [text, setText] = React.useState('')
-  const [robot, setRobot] = React.useState(false)
-  const inputRef = React.useRef();
-  const chatArr = useSelector(chatsSelector)
+  // const [messageList, setMessageList] = React.useState([])
+  // const [text, setText] = React.useState('')
+  // const [robot, setRobot] = React.useState(false)
+  // const inputRef = React.useRef();
+  // const chatArr = useSelector(chatsSelector)
 
-  React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      inputRef.current.focus();
-    }, 1000);
+  // React.useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     inputRef.current.focus();
+  //   }, 1000);
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout(timeout);
+  //   };
+  // }, []);
 
-  React.useEffect(() => {
-    if (robot === true) {
-      const messages = [...messageList, { text: 'Thanks!', author: AUTHORS.BOT }]
-      setMessageList(messages)
-      setRobot(false)
-    }
-  }, [robot, messageList]);
+  // React.useEffect(() => {
+  //   if (robot === true) {
+  //     const messages = [...messageList, { text: 'Thanks!', author: AUTHORS.BOT }]
+  //     setMessageList(messages)
+  //     setRobot(false)
+  //   }
+  // }, [robot, messageList]);
 
-  const handleClick = React.useCallback(() => {
-    const messages = [...messageList, { text, author: AUTHORS.ME }]
-    setMessageList(messages)
-    setRobot(true)
-  }, [messageList, text])
+  // const handleClick = React.useCallback(() => {
+  //   const messages = [...messageList, { text, author: AUTHORS.ME }]
+  //   setMessageList(messages)
+  //   setRobot(true)
+  // }, [messageList, text])
 
-  const handleTextChange = ({ target: { value } }) => {
-    setText(value)
-  }
+  // const handleTextChange = ({ target: { value } }) => {
+  //   setText(value)
+  // }
 
   // this.refs.messageInput.value = this.refs.messageInput.value
 
   return (
     <div className="App">
-      <Grid container spacing={2}>
+      {/* <Grid container spacing={2}>
         <Grid item xs={2}>
           <List component="nav">
             {chatArr.map((chat, idx) => <ListItem component={Link} to={"/chats/" + idx} divider button key={idx} ><ListItemText primary={chat.name} /></ListItem>)}
@@ -89,7 +89,7 @@ function App() {
             </form>
           </Container>
         </Grid>
-      </Grid>
+      </Grid> */}
     </div>
   );
 }
