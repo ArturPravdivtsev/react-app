@@ -41,6 +41,7 @@ export default function Menu() {
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
+                        id="open"
                     >
                         <MenuIcon />
                     </IconButton>
